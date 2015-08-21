@@ -1,0 +1,16 @@
+<h1><%= @sub.title %></h1>
+
+<table>
+  <tr>
+    <td>SubTitle</td>
+    <td>Description</td>
+    <td>Moderator</td>
+  </tr>
+  <tr>
+    <td><%= @sub.title %></td>
+    <td><%= @sub.description %></td>
+    <td><%= @sub.moderator.username %></td>
+  </tr>
+</table>
+
+<%= link_to "All subs", subs_url %>

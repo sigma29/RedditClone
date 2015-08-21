@@ -24,13 +24,17 @@ class SubsController < ApplicationController
     render :index
   end
 
+  def edit
+  end
+  
   def update
   end
 
-  def edit
-  end
+
 
   def show
+    @sub = Sub.find(params[:id])
+    render :show
   end
 
   private

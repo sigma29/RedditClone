@@ -14,7 +14,7 @@
   <% @subs.each do |sub| %>
       <tr>
         <td>
-        <%= sub.title %>
+        <%= link_to sub.title, sub_url(sub) %>
         </td>
         <td>
           <%= sub.description %>
