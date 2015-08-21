@@ -39,14 +39,13 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    sub = post.sub
     post.destroy
-    redirect_to sub_url(sub)
+    redirect_to subs_url
   end
 
   private
   def post_params
-    params.require(:post).permit(:title, :sub_id, :content)
+    params.require(:post).permit(:title, :content, :post_sub_ids => [])
   end
 
   def require_be_author

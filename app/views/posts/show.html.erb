@@ -8,6 +8,11 @@
   <% if current_user.is_author?(@post) %>
     <%= link_to "Edit this post", edit_post_url(@post) %>
   <% end %>
-  <% sub = @post.sub %>
+  <% post_subs = @post.post_subs.includes(:sub) %>
   <br>
-  <%= link_to sub.title, sub_url(sub) %>
+  <ul>
+    <%  post_subs.each do |post_sub| %>
+      <% sub = post_sub.sub %>
+      <li><%= link_to sub.title, sub_url(sub) %></li>
+    <% end %>
+</ul>
