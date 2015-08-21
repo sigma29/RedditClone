@@ -1,6 +1,6 @@
 class SubsController < ApplicationController
 
-  # before_action :require_be_moderator, only: [:edit]
+  before_action :require_be_moderator, only: [:edit, :update]
 
   def new
     @sub = Sub.new
@@ -30,7 +30,13 @@ class SubsController < ApplicationController
   end
 
   def update
-    
+    @sub = Sub.find(params[:id])
+    if @sub.update(sub_params)
+      redirect_to sub_url(@sub)
+    else
+      flash.now[:errors] = @sub.errors.full_messages
+      render :edit
+    end
   end
 
   def show

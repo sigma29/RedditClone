@@ -13,6 +13,7 @@
   </tr>
 </table>
 
-
-<%= link_to "Edit this sub!", edit_sub_url(@sub)%>
+<% if current_user.is_moderator?(@sub) %>
+  <%= link_to "Edit this sub!", edit_sub_url(@sub)%>
+<% end %>
 <%= link_to "All subs", subs_url %>
