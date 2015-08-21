@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  has_many :subs,
+    class_name: "Sub",
+    foreign_key: :moderator_id
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username,password)
