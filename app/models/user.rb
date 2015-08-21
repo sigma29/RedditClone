@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
     foreign_key: :author_id,
     dependent: :destroy
 
+  has_many :comments,
+    foreign_key: :author_id,
+    dependent: :destroy
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username,password)

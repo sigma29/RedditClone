@@ -8,6 +8,11 @@
   <% if current_user.is_author?(@post) %>
     <%= link_to "Edit this post", edit_post_url(@post) %>
   <% end %>
+  <br>
+
+  <%= link_to "Post reply", new_post_comment_url(@post.id) %>
+  <br>
+
   <% post_subs = @post.post_subs.includes(:sub) %>
   <br>
   <ul>
