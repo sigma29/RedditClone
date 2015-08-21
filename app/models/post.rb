@@ -16,5 +16,15 @@ class Post < ActiveRecord::Base
   has_many :comments,
     dependent: :destroy
 
+  def comments_by_parent_id
+    comments_hash = {}
+    comments.includes(:author).each do |comment|
+      if comments_hash.has_key?(comment.parent_comment_id)
+        comments_hash[parent_comment_id] << comment
+      else
+        comments_hash[parent_comment_id] = [comment]
+      end
+    end
+  end
 
 end
