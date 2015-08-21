@@ -14,10 +14,15 @@
   <br>
 
   <h3>Comments on this Post</h3>
+  <% @all_comments = @post.comments.includes(:author) %>
+
+
   <ul>
-  <% @post.comments.where("parent_comment_id IS NULL").each do |comment| %>
+  <% @all_comments.each do |comment| %>
+    <% next unless comment.parent_comment_id.nil? %>
     <li>
-      <%= render partial: "comment", locals: { comment: comment } %>
+      <%= render partial: "comment",
+        locals: { comment: comment, all_comments: @all_comments } %>
     </li>
   <% end %>
 </ul>

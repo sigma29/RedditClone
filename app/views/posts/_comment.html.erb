@@ -1,12 +1,15 @@
 <p>
   <%= link_to comment_shortener(comment), comment_url(comment) %>
 </p>
-<p> -- <%= comment.author.username  %>
+<p> -- <%= comment.author.username  %> at <%= comment.created_at %> </p>
+
 
 <ul>
-  <% comment.child_comments.each do |child| %>
+  <% all_comments.each do |potential_child| %>
+  <% next unless potential_child.parent_comment_id == comment.id %>
   <li>
-    <%= render partial: "comment", locals: { comment: child } %>
+    <%= render partial: "comment",
+      locals: { comment: potential_child, all_comments: all_comments } %>
   </li>
   <% end %>
 </ul>
