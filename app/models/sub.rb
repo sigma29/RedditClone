@@ -8,5 +8,6 @@ class Sub < ActiveRecord::Base
     inverse_of: :subs
 
   has_many :posts
+  has_many :post_subs
 
 end

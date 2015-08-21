@@ -9,4 +9,6 @@ class Post < ActiveRecord::Base
   belongs_to :sub,
     inverse_of: :posts
 
+  has_many :post_subs
+
 end
