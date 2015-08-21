@@ -1,0 +1,4 @@
+<h1>Edit Post <%= @post.title %></h1>
+
+<%= render partial: "layouts/errors" %>
+<%= render partial: "form", locals: { post: @post } %>

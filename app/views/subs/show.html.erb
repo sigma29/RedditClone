@@ -13,6 +13,12 @@
   </tr>
 </table>
 
+<h2>All the posts!</h2>
+  <ul>
+    <% @sub.posts.each do |post| %>
+      <li><%= link_to post.title, post_url(post) %></li>
+    <% end %>
+  </ul>
 <% if current_user.is_moderator?(@sub) %>
   <%= link_to "Edit this sub!", edit_sub_url(@sub)%>
 <% end %>

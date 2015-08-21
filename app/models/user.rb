@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     self.id == sub.moderator_id
   end
 
+  def is_author?(post)
+    self.id == post.author_id
+  end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64(16)

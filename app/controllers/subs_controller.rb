@@ -40,7 +40,7 @@ class SubsController < ApplicationController
   end
 
   def show
-    @sub = Sub.find(params[:id])
+    @sub = Sub.includes(:posts).find(params[:id])
     render :show
   end
 

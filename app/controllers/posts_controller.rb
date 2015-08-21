@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :require_be_author, only: [:edit, :update]
+
   def new
     @post = Post.new
     render :new
@@ -44,7 +46,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :description, :sub_id)
+    params.require(:post).permit(:title, :sub_id, :content)
+  end
+
+  def require_be_author
+    redirect_to post_url(params[:id]) unless current_user.is_author?(params[:id])
   end
 
 end
