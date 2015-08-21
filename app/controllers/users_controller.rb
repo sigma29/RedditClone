@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
+  before_action :require_logged_in, only: [:show]
+
   def create
     @user = User.new(user_params)
     if @user.save
-      #login
+      login(@user)
       redirect_to user_url(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
