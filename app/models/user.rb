@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
     class_name: "Sub",
     foreign_key: :moderator_id
 
+  has_many :posts,
+    foreign_key: :author_id,
+    dependent: :destroy
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username,password)
