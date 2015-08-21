@@ -1,0 +1,15 @@
+<p>
+  <%= comment.content %>
+</p>
+<p> -- <%= comment.author.username  %>
+
+<ul>
+  <% comment.child_comments.each do |child| %>
+  <li>
+    <p>
+      <%= child.content %>
+    </p>
+    <p> -- <%= child.author.username  %>
+  </li>
+  <% end %>
+</ul>

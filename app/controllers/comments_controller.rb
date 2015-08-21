@@ -23,8 +23,14 @@ class CommentsController < ApplicationController
     redirect_to post_url(post)
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    render :show
+  end
+
   private
   def comment_params
-    params.require(:comment).permit(:content, :author_id, :post_id)
+    params.require(:comment)
+      .permit(:content, :author_id, :post_id, :parent_comment_id)
   end
 end

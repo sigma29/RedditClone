@@ -1,0 +1,19 @@
+<% post = @comment.post %>
+<h1>Comment on  <%= post.title %></h1>
+<p>
+  <%= @comment.content %>
+</p>
+
+<form  action="<%= post_comments_url(post) %>" method="post">
+  <%= form_auth_token %>
+  <input
+    type="hidden"
+    name="comment[parent_comment_id]"
+    value="<%= @comment.id %>">
+
+  <textarea name="comment[content]" rows="8" cols="40"></textarea>
+  <br>
+  <input type="submit" value="Leave a reply">
+</form>
+
+<%= link_to "Return to Post", post_url(post) %>

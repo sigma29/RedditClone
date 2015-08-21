@@ -1,7 +1,11 @@
 <h1>Add a Comment</h1>
+<% render partial: 'layouts/errors' %>
 
 <form action="<%= post_comments_url %>" method="post">
   <%= form_auth_token %>
+  <input type="hidden"
+    name="comment[parent_comment_id]"
+    value="<%= @comment.parent_comment_id %>">
   <textarea name="comment[content]" rows="8" cols="40"></textarea>
   <br>
   <input type="submit" value="Post your comment">

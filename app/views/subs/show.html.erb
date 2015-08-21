@@ -19,7 +19,11 @@
       <li><%= link_to post.title, post_url(post) %></li>
     <% end %>
   </ul>
+<%= link_to "Create New Post", new_post_url %>
+<br>
 <% if current_user.is_moderator?(@sub) %>
   <%= link_to "Edit this sub!", edit_sub_url(@sub)%>
+  <br>
 <% end %>
+
 <%= link_to "All subs", subs_url %>
