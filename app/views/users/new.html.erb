@@ -1,0 +1,20 @@
+<h1>Sign up</h1>
+
+<%= render partial: "layouts/errors" %>
+
+<form action="<%= users_url  %>" method="post">
+  <%= form_auth_token %>
+
+  <label>Username
+    <input type="text" name="user[username]" value="<%= @user.username %>">
+  </label>
+  <br>
+
+  <label>Password
+    <input type="password" name="user[password]">
+  </label>
+  <br>
+
+  <input type="submit" value="Sign Up">
+
+</form>

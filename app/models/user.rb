@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   validates :username, :session_token, :password_digest, presence: true
   validates :username, :session_token, uniqueness: true
+  validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
 
@@ -27,8 +28,6 @@ class User < ActiveRecord::Base
 
     session_token
   end
-
-
 
   private
   def ensure_session_token
