@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     session_token
   end
 
+  def is_moderator?(sub)
+    self.id == sub.moderator_id
+  end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64(16)

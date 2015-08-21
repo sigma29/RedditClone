@@ -1,0 +1,27 @@
+<h1>all the subs!!11one</h1>
+<table>
+  <tr>
+    <td>
+      SubTitle
+    </td>
+    <td>
+      Description
+    </td>
+    <td>
+      Moderator
+    </td>
+  </tr>
+  <% @subs.each do |sub| %>
+      <tr>
+        <td>
+        <%= sub.title %>
+        </td>
+        <td>
+          <%= sub.description %>
+        </td>
+        <td>
+          <%= sub.moderator.username %>
+        </td>
+      </tr>
+  <% end %>
+</table>
