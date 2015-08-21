@@ -1,6 +1,6 @@
-<% method = sub.persisted? "patch" : "post" %>
-<% button_text = sub.persisted? "Update sub" : "Create sub" %>
-<% path = sub.persisted? sub_url(sub) : subs_url %>
+<% method = sub.persisted? ? "patch" : "post" %>
+<% button_text = sub.persisted? ? "Update sub" : "Create sub" %>
+<% path = sub.persisted? ? sub_url(sub) : subs_url %>
 
 <form action="<%= path %>" method="post">
   <input type="hidden" name="_method" value="<%= method %>">
@@ -11,7 +11,7 @@
     </label>
     <br>
     <label>Description
-      <textarea rows="5" cols="40"><%= sub.description %></textarea>
+      <textarea rows="5" cols="40" name="sub[description]"><%= sub.description %></textarea>
     </label>
     <br>
   <input type="submit" value="<%= button_text %>">

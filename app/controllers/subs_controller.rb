@@ -1,6 +1,6 @@
 class SubsController < ApplicationController
 
-  before_action :require_be_moderator, only: [:edit]
+  # before_action :require_be_moderator, only: [:edit]
 
   def new
     @sub = Sub.new
@@ -25,12 +25,13 @@ class SubsController < ApplicationController
   end
 
   def edit
+    @sub = Sub.find(params[:id])
+    render :edit
   end
-  
+
   def update
+    
   end
-
-
 
   def show
     @sub = Sub.find(params[:id])
@@ -44,7 +45,6 @@ class SubsController < ApplicationController
 
   def require_be_moderator
     sub = Sub.find(params[:id])
-    current_user.is_moderator?(sub)
-    redirect_to sub_url(sub)
+    redirect_to sub_url(sub) unless current_user.try(:is_moderator?, sub)
   end
 end
